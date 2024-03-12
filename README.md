@@ -23,7 +23,7 @@
     ```
 2. Клонировать репозиторий с помощью git: 
    ```bash
-     git clone 
+     git clone git@github.com:oleg-sung/TgWbBot.git
    ```
    Далее перейдите в папку проекта:
    ```bash
