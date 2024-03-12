@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14.3-alpine
+    container_name: postgres_container
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data\
+    restart: unless-stopped
+    networks:
+      - postgres
+
+  mybot:
+    build:
+      context: .
+      dockerfile: docker/bot/Dockerfile
+    depends_on:
+      - postgres
+    command: python3 run.py
+    env_file:
+      - .env
+    networks:
+      - postgres
+
+volumes:
+  pgdata:
+
+networks:
+  postgres:
