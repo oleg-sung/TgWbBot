@@ -6,11 +6,11 @@ from app.db.models import Base
 
 load_dotenv()
 
-USER = os.environ.get('PG_USER')
-PASSWORD = os.environ.get('PG_PASSWORD')
-HOST = os.environ.get('PG_HOST')
-PORT = os.environ.get('PG_PORT')
-NAME = os.environ.get('PG_NAME')
+USER = os.environ.get('POSTGRES_USER')
+PASSWORD = os.environ.get('POSTGRES_PASSWORD')
+HOST = os.environ.get('POSTGRES_HOST')
+PORT = os.environ.get('POSTGRES_PORT')
+NAME = os.environ.get('POSTGRES_PORT')
 
 
 engine = create_async_engine(
