@@ -39,7 +39,7 @@ async def cmd_start(message: Message):
 async def get_item_info(message: Message, state: FSMContext):
     await state.set_state(Art.id)
     await message.answer(
-        f"Артикул товара состоит из 9 цифр ❗\nВведите артикул тавара 👇",
+        f"Артикул должен быть только из цифр ❗\nВведите артикул тавара 👇",
         reply_markup=reply,
     )
 
