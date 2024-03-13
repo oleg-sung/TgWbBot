@@ -6,18 +6,20 @@ from app.db.models import Base
 
 load_dotenv()
 
-USER = os.environ.get('POSTGRES_USER')
-PASSWORD = os.environ.get('POSTGRES_PASSWORD')
-HOST = os.environ.get('POSTGRES_HOST')
-PORT = os.environ.get('POSTGRES_PORT')
-NAME = os.environ.get('POSTGRES_DB')
+USER = os.environ.get("POSTGRES_USER")
+PASSWORD = os.environ.get("POSTGRES_PASSWORD")
+HOST = os.environ.get("POSTGRES_HOST")
+PORT = os.environ.get("POSTGRES_PORT")
+NAME = os.environ.get("POSTGRES_DB")
 
 
 engine = create_async_engine(
-    f'postgresql+asyncpg://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}',
-    echo=True)
+    f"postgresql+asyncpg://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}", echo=True
+)
 
-session_maker = async_sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
+session_maker = async_sessionmaker(
+    bind=engine, class_=AsyncSession, expire_on_commit=False
+)
 
 
 async def create_db():
