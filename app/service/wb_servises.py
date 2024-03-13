@@ -10,7 +10,7 @@ async def get_item_by_articyl(articyl: int) -> dict | str:
     if response.status_code == 200:
         response_data = response.json()
         if not response_data["data"]["products"]:
-            return f"⚠ Товар по артилем {articyl} не найден ⚠.\nПроверте корректность артикль!"
+            return f"⚠ Товар по артиклю {articyl} не найден ⚠.\nПроверте корректность артикля товара!"
         data = response.json()["data"]["products"][0]
         qty = 0
         for size in data["sizes"]:
@@ -27,6 +27,4 @@ async def get_item_by_articyl(articyl: int) -> dict | str:
 async def validate_articyl(atr: str):
     if not atr.isnumeric():
         return "❌ Артикул должен состоять только из цифр ❌"
-    if len(atr) != 9:
-        return "❌ Артикул тавара должен состоять из 9 цифр ❌"
     return atr
