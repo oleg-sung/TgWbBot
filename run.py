@@ -14,7 +14,7 @@ bot = Bot(token=os.environ.get("TOKEN"))
 dp = Dispatcher()
 
 
-async def on_startup(bot: Bot, run_param: bool = False):
+async def on_startup(bot: Bot):
     run_param = False
     if run_param:
         await drop_db()
