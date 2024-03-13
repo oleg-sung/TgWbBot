@@ -93,6 +93,7 @@ async def get_info_from_db(message: Message, session: AsyncSession):
 @router.callback_query(lambda c: c.data == "subscribe")
 async def subscribe(call: CallbackQuery):
     await call.answer("✅ Вы подписались на уведомления ✅", reply_markup=reply)
-    scheduled_task[call.from_user.id] = asyncio.create_task(
-        send_notification(call.from_user.id, text=call.message.text)
-    )
+    if not scheduled_task.get(call.from_user.id, None):
+        scheduled_task[call.from_user.id] = asyncio.create_task(
+            send_notification(call.from_user.id, text=call.message.text)
+        )
