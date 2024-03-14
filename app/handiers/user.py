@@ -66,6 +66,7 @@ async def cheak_art(message: Message, state: FSMContext, session: AsyncSession):
             await message.answer(
                 f"📦 {data['name']} 📦\n\n"
                 f"🧮 Артикул товара: {data['id']}\n"
+                f"⭐️ Рейтинг товара: {data['rating']}"
                 f"💵 Цена: {data['price']//100} рублей\n"
                 f"🗃 Колличество товара на складах: {data['qty']}шт.",
                 reply_markup=inline,
